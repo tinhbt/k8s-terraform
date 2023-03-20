@@ -30,7 +30,7 @@ data "template_file" "init_script" {
 
   vars = {
     PEM_KEYPAIR_CONTENT = local.PEM_KEYPAIR_CONTENT
-    WORKER_IP = local.WORKER_IP
+    WORKER_IP = join(" ",local.WORKER_IP)
   }
 }
 

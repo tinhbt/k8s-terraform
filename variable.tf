@@ -4,6 +4,9 @@ variable "MANAGER_INSTANCE_TYPE" {}
 # variable "PEM_KEYPAIR_CONTENT" {}
 variable "WORKER_PORT" {}
 variable "WORKER_INSTANCE_TYPE" {}
+variable "NUMBER_WORKER_NODE" {
+  type = number
+}
 #VPC VAR
 variable "VPC_CIDR" {
   type        = string

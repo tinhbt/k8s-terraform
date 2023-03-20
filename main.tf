@@ -28,9 +28,10 @@ module "k8s-worker" {
   source = "./modules/k8s-worker"
   ENV                    = var.ENV
   PROJECT_NAME           = var.PROJECT_NAME
-  VPC_ID = module.vpc.VPC_ID
   WORKER_PORT = var.WORKER_PORT
   WORKER_INSTANCE_TYPE = var.WORKER_INSTANCE_TYPE
+  NUMBER_WORKER_NODE = var.NUMBER_WORKER_NODE
+  VPC_ID = module.vpc.VPC_ID
   SUBNET_ID = module.vpc.PUBLIC_SUBNET_ID[0]
 }
  output "WORKER_IP" {

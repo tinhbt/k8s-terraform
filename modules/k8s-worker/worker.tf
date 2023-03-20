@@ -28,6 +28,7 @@ data "template_file" "init_script" {
 
 resource "aws_spot_instance_request" "k8s-worker" {
   ami = data.aws_ami.ubuntu-ami.id
+  count = var.NUMBER_WORKER_NODE
   key_name = "tinh.bui"
   instance_type = var.WORKER_INSTANCE_TYPE
   subnet_id = var.SUBNET_ID
@@ -45,5 +46,5 @@ resource "aws_spot_instance_request" "k8s-worker" {
   }
 }
 output "WORKER_IP" {
-  value = aws_spot_instance_request.k8s-worker.private_ip
+  value = aws_spot_instance_request.k8s-worker[*].private_ip
 }

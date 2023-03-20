@@ -4,7 +4,7 @@ sudo apt install -y ansible
 
 #Change /etc/hosts
 hostname -I | sed "s/$/$(hostname)/" | tee /etc/hosts
-echo "ip_worker worker1" | tee -a /etc/hosts
+echo "${WORKER_IP} worker1" | tee -a /etc/hosts
 
 #Edit ansible config
 mkdir -p /etc/ansible/
@@ -21,8 +21,12 @@ ansible_user=ubuntu
 
 [all]
 $(hostname) kubernetes_role="control_plane"
-${WORKER_IP} kubernetes_role="node"
 EOF
+for WORKER_IP_SHELL in "${WORKER_IP}"; do
+cat <<EOF >> /home/ubuntu/hosts
+$WORKER_IP_SHELL kubernetes_role="node"
+EOF
+done
 
 #Edit key file
 cat << EOF > /home/ubuntu/windows.pem

@@ -1,5 +1,6 @@
 ENV                 = "test"
 PROJECT_NAME        = "cluster"
+NUMBER_WORKER_NODE = 3
 MANAGER_PORT = {
   "6443" = "6443"
   "2379" = "2380"

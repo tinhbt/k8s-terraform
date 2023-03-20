@@ -10,3 +10,4 @@ variable "PROJECT_NAME" {
 variable "SUBNET_ID" {}
 variable "WORKER_PORT" {}
 variable "WORKER_INSTANCE_TYPE" {}
+variable "NUMBER_WORKER_NODE" {}
