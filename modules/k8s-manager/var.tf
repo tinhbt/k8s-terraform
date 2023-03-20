@@ -1,5 +1,6 @@
 variable "VPC_ID" {}
 variable "PUBLIC_SUBNET" {}
+variable "KEY_NAME" {}
 variable "ENV" {
   type        = string
   description = "Environment infra"

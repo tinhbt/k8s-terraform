@@ -1,6 +1,7 @@
 ENV                 = "test"
 PROJECT_NAME        = "cluster"
-NUMBER_WORKER_NODE = 3
+NUMBER_WORKER_NODE = 2
+KEY_NAME = "windows"
 MANAGER_PORT = {
   "6443" = "6443"
   "2379" = "2380"
@@ -17,15 +18,15 @@ WORKER_PORT = {
 # VPC variables
 VPC_CIDR = "10.0.0.0/16"
 PUBLIC_SUBNET_NUMBERS = {
-  "us-east-1a" = 1
-  "us-east-1b" = 2
+  "ap-southeast-1a" = 1
+  "ap-southeast-1b" = 2
 }
 
 PRIVATE_SUBNET_NUMBERS = {
-  "us-east-1a" = 3
-  "us-east-1b" = 4
+  "ap-southeast-1a" = 3
+  "ap-southeast-1b" = 4
 }
 # PEM_KEYPAIR_CONTENT = 
 
 MANAGER_INSTANCE_TYPE = "t2.medium"
-WORKER_INSTANCE_TYPE = "t2.xlarge"
+WORKER_INSTANCE_TYPE = "t2.medium"

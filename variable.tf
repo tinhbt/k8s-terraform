@@ -7,6 +7,8 @@ variable "WORKER_INSTANCE_TYPE" {}
 variable "NUMBER_WORKER_NODE" {
   type = number
 }
+variable "KEY_NAME" {}
+
 #VPC VAR
 variable "VPC_CIDR" {
   type        = string

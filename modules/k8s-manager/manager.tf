@@ -1,5 +1,5 @@
 locals {
-  PEM_KEYPAIR_CONTENT = file("./tinh.bui.pem")
+  PEM_KEYPAIR_CONTENT = file("./windows.pem")
   WORKER_IP = "${var.WORKER_IP}"
 }
 #Get AMI ID
@@ -36,7 +36,7 @@ data "template_file" "init_script" {
 
 resource "aws_spot_instance_request" "k8s-manager" {
   ami = data.aws_ami.ubuntu-ami.id
-  key_name = "tinh.bui"
+  key_name = var.KEY_NAME
   instance_type = var.MANAGER_INSTANCE_TYPE
   subnet_id = var.SUBNET_ID
   security_groups = [aws_security_group.manager-sg.id]

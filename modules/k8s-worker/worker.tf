@@ -21,19 +21,13 @@ data "aws_ami" "ubuntu-ami" {
   }
 }
 #Read scipt file
-data "template_file" "init_script" {
-  template = file("./modules/k8s-worker/init-worker.sh")
-
-}
-
 resource "aws_spot_instance_request" "k8s-worker" {
   ami = data.aws_ami.ubuntu-ami.id
   count = var.NUMBER_WORKER_NODE
-  key_name = "tinh.bui"
+  key_name = var.KEY_NAME
   instance_type = var.WORKER_INSTANCE_TYPE
   subnet_id = var.SUBNET_ID
   security_groups = [aws_security_group.worker-sg.id]
-  user_data = data.template_file.init_script.rendered
   tags = {
     Name = "${var.ENV}-${var.PROJECT_NAME}"
   }

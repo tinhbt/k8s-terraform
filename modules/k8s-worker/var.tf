@@ -1,4 +1,6 @@
 variable "VPC_ID" {}
+variable "KEY_NAME" {}
+
 variable "ENV" {
   type        = string
   description = "Environment infra"
