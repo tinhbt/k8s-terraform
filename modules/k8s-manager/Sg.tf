@@ -7,7 +7,7 @@ resource "aws_security_group" "manager-sg" {
 }
 
 resource "aws_security_group_rule" "rule-manager-ingress-1" {
-  for_each = var.MANAGER_PORT
+  for_each          = var.MANAGER_PORT
   security_group_id = aws_security_group.manager-sg.id
   type              = "ingress"
   from_port         = each.key

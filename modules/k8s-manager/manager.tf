@@ -1,6 +1,6 @@
 locals {
-  PEM_KEYPAIR_CONTENT = file("./windows.pem")
-  WORKER_IP = "${var.WORKER_IP}"
+  PEM_KEYPAIR_CONTENT = file("./tinh.bui.pem")
+  WORKER_IP           = var.WORKER_IP
 }
 #Get AMI ID
 data "aws_ami" "ubuntu-ami" {
@@ -30,17 +30,17 @@ data "template_file" "init_script" {
 
   vars = {
     PEM_KEYPAIR_CONTENT = local.PEM_KEYPAIR_CONTENT
-    WORKER_IP = join(" ",local.WORKER_IP)
+    WORKER_IP           = join(" ", local.WORKER_IP)
   }
 }
 
 resource "aws_spot_instance_request" "k8s-manager" {
-  ami = data.aws_ami.ubuntu-ami.id
-  key_name = var.KEY_NAME
-  instance_type = var.MANAGER_INSTANCE_TYPE
-  subnet_id = var.SUBNET_ID
+  ami             = data.aws_ami.ubuntu-ami.id
+  key_name        = var.KEY_NAME
+  instance_type   = var.MANAGER_INSTANCE_TYPE
+  subnet_id       = var.SUBNET_ID
   security_groups = [aws_security_group.manager-sg.id]
-  user_data = data.template_file.init_script.rendered
+  user_data       = data.template_file.init_script.rendered
   tags = {
     Name = "${var.ENV}-${var.PROJECT_NAME}"
   }

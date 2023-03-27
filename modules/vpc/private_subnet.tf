@@ -23,7 +23,7 @@ resource "aws_route_table" "private_rtb" {
 
 #   route_table_id         = aws_route_table.private_rtb.id
 #   destination_cidr_block = var.VPC_CIDR
-  
+
 # }
 # ##Associate with private subnet
 # resource "aws_route_table_association" "private" {

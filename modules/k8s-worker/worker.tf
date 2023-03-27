@@ -22,11 +22,11 @@ data "aws_ami" "ubuntu-ami" {
 }
 #Read scipt file
 resource "aws_spot_instance_request" "k8s-worker" {
-  ami = data.aws_ami.ubuntu-ami.id
-  count = var.NUMBER_WORKER_NODE
-  key_name = var.KEY_NAME
-  instance_type = var.WORKER_INSTANCE_TYPE
-  subnet_id = var.SUBNET_ID
+  ami             = data.aws_ami.ubuntu-ami.id
+  count           = var.NUMBER_WORKER_NODE
+  key_name        = var.KEY_NAME
+  instance_type   = var.WORKER_INSTANCE_TYPE
+  subnet_id       = var.SUBNET_ID
   security_groups = [aws_security_group.worker-sg.id]
   tags = {
     Name = "${var.ENV}-${var.PROJECT_NAME}"
