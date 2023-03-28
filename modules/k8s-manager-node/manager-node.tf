@@ -1,7 +1,3 @@
-locals {
-  PEM_KEYPAIR_CONTENT = file("./tinh.bui.pem")
-  WORKER_IP           = var.WORKER_IP
-}
 #Get AMI ID
 data "aws_ami" "ubuntu-ami" {
   most_recent = true
@@ -25,22 +21,13 @@ data "aws_ami" "ubuntu-ami" {
   }
 }
 #Read scipt file
-data "template_file" "init_script" {
-  template = file("./modules/k8s-manager/init-k8s.sh")
-
-  vars = {
-    PEM_KEYPAIR_CONTENT = local.PEM_KEYPAIR_CONTENT
-    WORKER_IP           = join(" ", local.WORKER_IP)
-  }
-}
-
-resource "aws_spot_instance_request" "k8s-manager" {
+resource "aws_spot_instance_request" "k8s-manager-node" {
   ami             = data.aws_ami.ubuntu-ami.id
+  count           = var.NUMBER_MANAGER_NODE
   key_name        = var.KEY_NAME
   instance_type   = var.MANAGER_INSTANCE_TYPE
   subnet_id       = var.SUBNET_ID
   security_groups = [aws_security_group.manager-sg.id]
-  user_data       = data.template_file.init_script.rendered
   tags = {
     Name = "${var.ENV}-${var.PROJECT_NAME}"
   }
@@ -51,5 +38,4 @@ resource "aws_spot_instance_request" "k8s-manager" {
     volume_size           = "50"
     volume_type           = "gp3"
   }
-
 }

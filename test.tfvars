@@ -1,6 +1,7 @@
 ENV                = "test"
 PROJECT_NAME       = "cluster"
 NUMBER_WORKER_NODE = 2
+NUMBER_MANAGER_NODE = 2
 KEY_NAME           = "tinh.bui"
 MANAGER_PORT = {
   "6443"  = "6443"

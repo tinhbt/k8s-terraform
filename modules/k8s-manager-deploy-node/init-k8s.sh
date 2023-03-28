@@ -22,6 +22,15 @@ ansible_user=ubuntu
 [all]
 $(hostname) kubernetes_role="control_plane"
 EOF
+
+#Add master node
+for MANAGER_IP_SHELL in ${MANAGER_IP}; do
+cat <<EOF >> /home/ubuntu/hosts
+$MANAGER_IP_SHELL kubernetes_role="control_plane"
+EOF
+done
+
+#Add worker node
 for WORKER_IP_SHELL in ${WORKER_IP}; do
 cat <<EOF >> /home/ubuntu/hosts
 $WORKER_IP_SHELL kubernetes_role="node"

@@ -1,4 +1,4 @@
-
+variable "NUMBER_MANAGER_NODE" {}
 variable "MANAGER_PORT" {}
 variable "MANAGER_INSTANCE_TYPE" {}
 # variable "PEM_KEYPAIR_CONTENT" {}

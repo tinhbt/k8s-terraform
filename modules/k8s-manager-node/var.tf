@@ -12,5 +12,4 @@ variable "PROJECT_NAME" {
 variable "SUBNET_ID" {}
 variable "MANAGER_PORT" {}
 variable "MANAGER_INSTANCE_TYPE" {}
-variable "WORKER_IP" {}
-# variable "PEM_KEYPAIR_CONTENT" {}
+variable "NUMBER_MANAGER_NODE" {}
