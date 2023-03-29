@@ -38,3 +38,6 @@ module "k8s-worker" {
 output "WORKER_IP" {
   value = module.k8s-worker.WORKER_IP
 }
+output "MANAGER_PUBLIC_IP" {
+  value = module.k8s-manager.MANAGER_PUBLIC_IP
+}

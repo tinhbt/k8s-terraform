@@ -82,10 +82,8 @@ cat <<EOF > /home/ubuntu/playbook.yaml
               sudo swapoff -a
               sudo sed -i '/swap/ s/^\(.*\)$/#\1/g' /etc/fstab
     - name: Update and upgrade apt packages
-      apt:
-        upgrade: no
-        update_cache: yes
-        cache_valid_time: 86400 #One day
+      shell: |
+              apt update
   roles:
     - geerlingguy.containerd
     - ansible-role-kubernetes
