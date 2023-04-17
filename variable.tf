@@ -1,4 +1,6 @@
+variable "KEY_PEM_PATH" {
 
+}
 variable "MANAGER_PORT" {}
 variable "MANAGER_INSTANCE_TYPE" {}
 # variable "PEM_KEYPAIR_CONTENT" {}

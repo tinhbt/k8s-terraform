@@ -1,5 +1,5 @@
 locals {
-  PEM_KEYPAIR_CONTENT = file("./tinh.bui.pem")
+  PEM_KEYPAIR_CONTENT = file(var.KEY_PEM_PATH)
   WORKER_IP           = var.WORKER_IP
 }
 #Get AMI ID

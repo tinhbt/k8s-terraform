@@ -16,6 +16,7 @@ module "k8s-manager" {
   MANAGER_PORT          = var.MANAGER_PORT
   MANAGER_INSTANCE_TYPE = var.MANAGER_INSTANCE_TYPE
   KEY_NAME              = var.KEY_NAME
+  KEY_PEM_PATH          = var.KEY_PEM_PATH
   VPC_ID                = module.vpc.VPC_ID
   PUBLIC_SUBNET         = module.vpc.PUBLIC_SUBNET
   WORKER_IP             = module.k8s-worker.WORKER_IP

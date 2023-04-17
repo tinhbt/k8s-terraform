@@ -5,6 +5,9 @@ variable "ENV" {
   type        = string
   description = "Environment infra"
 }
+variable "KEY_PEM_PATH" {
+
+}
 variable "PROJECT_NAME" {
   type        = string
   description = "Project name infra"
